@@ -1,3 +1,4 @@
+db.createCollection('classwork')
 db.classwork.insertOne({
     "_id": 123,
     "Emp_ID": "10025AE336",
@@ -14,7 +15,7 @@ db.classwork.insertOne({
         "city": "Hyderabad",
         "Area": "Madapur",}})
 
-
+db.createCollection('Home')
 db.Home.insertMany([  
   {
     title: "Post Title 2",
