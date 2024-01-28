@@ -15,6 +15,31 @@ db.classwork.insertOne({
         "city": "Hyderabad",
         "Area": "Madapur",}})
 
+/*OutPut:
+{
+  acknowledged: true,
+  insertedId: 123
+}*/
+
+db.createCollection('School')
+db.School.insertOne([  
+  {
+    title: "Post Title 2",
+    body: "Body of post.",
+    category: "Event",
+    likes: 2,
+    tags: ["news", "events"],
+    date: Date()
+  }
+
+/* OutPut:
+ {
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65b1553c5326bc7c7f57cf1c')
+    }
+}*/
+
 db.createCollection('Home')
 db.Home.insertMany([  
   {
@@ -42,3 +67,14 @@ db.Home.insertMany([
     date: Date()
   }
 ])
+
+/*OutPut:
+    {
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65b1553c5326bc7c7f57cf1c'),
+    '1': ObjectId('65b1553c5326bc7c7f57cf1d'),
+    '2': ObjectId('65b1553c5326bc7c7f57cf1e')
+  }
+}
+*/
