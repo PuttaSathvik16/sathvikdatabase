@@ -14,13 +14,14 @@ db.classwork.insertOne({
     "Address": {
         "city": "Hyderabad",
         "Area": "Madapur",}})
-
 /*OutPut:
 {
   acknowledged: true,
   insertedId: 123
 }*/
 
+
+//INSERTONE()
 db.createCollection('School')
 db.School.insertOne([  
   {
@@ -40,6 +41,7 @@ db.School.insertOne([
     }
 }*/
 
+//INSERTMANY()
 db.createCollection('Home')
 db.Home.insertMany([  
   {
@@ -67,7 +69,6 @@ db.Home.insertMany([
     date: Date()
   }
 ])
-
 /*OutPut:
     {
   acknowledged: true,
