@@ -14,7 +14,6 @@ db.classwork.insertOne({
     "Address": {
         "city": "Hyderabad",
         "Area": "Madapur",}})
-
 /*OutPut:
 {
   acknowledged: true,
