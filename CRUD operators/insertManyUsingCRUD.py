@@ -1,47 +1,40 @@
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
+from pymongo import MongoClient
 import datetime
 
+# Connect to MongoDB (replace with your actual MongoDB URI)
 uri = "mongodb+srv://puttasathvik16:Sathvik123@cluster0.4xuta2y.mongodb.net/"
-
-# Create a new client and connect to the server
-client = MongoClient(uri, server_api=ServerApi('1'))
+client = MongoClient(uri)
 
 try:
-    # Send a ping to confirm a successful connection
-    client.admin.command('ping')
+    # Get reference to 'students' database
+    db = client.students
 
-    # Get reference to 'bank' database
-    db = client.bank
+    # Get reference to 'enrollments' collection
+    enrollments_collection = db.enrollments
 
-    # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
-
-    # inserting many accounts
-    new_accounts = [
+    # Enroll students in courses
+    new_enrollments = [
         {
-            "account_id": "MDB011235813",
-            "account_holder": "Ada Lovelace",
-            "account_type": "checking",
-            "balance": 60218,
+            "student_id": "0942304",
+            "full_name": "Sathvik Putta",
+            "courses": ["ADV Database Design", "Big Data", "Scripting"],
         },
         {
-            "account_id": "MDB829000001",
-            "account_holder": "Muhammad ibn Musa al-Khwarizmi",
-            "account_type": "savings",
-            "balance": 267914296,
+            "student_id": "0942303",
+            "full_name": "Latha Reddy",
+            "courses": ["Computer Science", "Physics", "Big Data"],
+            
         },
     ]
 
-    # Write an expression that inserts the 'new_account' document into the 'accounts' collection.
-    result = accounts_collection.insert_many(new_accounts)
+    # Insert the 'new_enrollments' documents into the 'enrollments' collection
+    result = enrollments_collection.insert_many(new_enrollments)
 
     document_ids = result.inserted_ids
     print("# of documents inserted: " + str(len(document_ids)))
     print(f"_ids of inserted documents: {document_ids}")
 
-
 except Exception as e:
-    print(e)
+    print(f"Error: {e}")
 finally:
     client.close()
